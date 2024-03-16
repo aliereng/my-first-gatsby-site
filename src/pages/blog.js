@@ -10,6 +10,7 @@ const BlogPage = ({data}) => {
                 {
                     data.allMdx.nodes.map((node) => (
                         <article key={node.id}>
+                            <p>{node.frontmatter.slug}</p>
                             <h2>{node.frontmatter.title}</h2>
                             <p>Posted: {node.frontmatter.date}</p>
                             <p>{node.excerpt}</p>
@@ -25,6 +26,7 @@ export const query = graphql`
         allMdx(sort: {frontmatter: {date: DESC}}){
             nodes {
                 frontmatter{
+                    slug
                     title
                     date(formatString: "D.MM.YYYY")
                     
